@@ -19,3 +19,11 @@ exports.read_task = function(req, res) {
       res.json(task);
     });
 };
+
+exports.list_tasks = function(req, res) {
+    Task.find({}, function(err, task) {
+      if (err)
+        res.send(err);
+      res.json(task);
+    });
+};
