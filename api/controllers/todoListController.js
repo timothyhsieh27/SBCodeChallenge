@@ -12,8 +12,8 @@ exports.create_task = function(req, res) {
   });
 };
 
-exports.list_tasks = function(req, res) {
-    Task.find({}, function(err, task) {
+exports.read_task = function(req, res) {
+    Task.findById(req.params.taskId, function(err, task) {
       if (err)
         res.send(err);
       res.json(task);
