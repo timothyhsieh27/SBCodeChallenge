@@ -8,4 +8,5 @@ module.exports = function(app) {
 
     app.route('/tasks/:taskId')
         .get(todoList.read_task)
+        .delete(todoList.delete_task);
 };

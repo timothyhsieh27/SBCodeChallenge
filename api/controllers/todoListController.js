@@ -27,3 +27,13 @@ exports.list_tasks = function(req, res) {
       res.json(task);
     });
 };
+
+exports.delete_task = function(req, res) {
+    Task.remove({
+      _id: req.params.taskId
+    }, function(err, task) {
+      if (err)
+        res.send(err);
+      res.json({ message: 'Task successfully deleted' });
+    });
+};
