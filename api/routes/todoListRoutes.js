@@ -4,5 +4,6 @@ module.exports = function(app) {
 
   // todoList Routes
   app.route('/tasks')
-    .post(todoList.create_task);
+    .post(todoList.create_task)
+    .get(todoList.list_tasks);
 };
