@@ -39,9 +39,14 @@ exports.delete_task = function(req, res) {
 };
 
 exports.update_task = function(req, res) {
-    Task.findOneAndUpdate({_id: req.params.taskId}, req.body, {new: true}, function(err, task) {
-      if (err)
-        res.send(err);
-      res.json(task);
+    Task.findOne({_id: req.params.taskId}, function (err, task) {
+        (task.status == "pending" ? task.status = "complete" : task.status = "pending");
+        (task.status == "complete" ? task.completed_at = Date.now() : task.completed_at = task.completed_at);
+        task.save(function (err, task) {
+            if(err) {
+                console.log(err);
+            }
+            res.json(task);
+        });
     });
-  };
+};

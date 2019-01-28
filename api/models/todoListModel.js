@@ -16,7 +16,11 @@ var TaskSchema = new Schema({
       type: String,
       enum: ['pending', 'complete']
     }],
-    default: ['pending']
+    default: 'pending'
+  },
+  completed_at: {
+    type: Date,
+    default: null
   }
 });
 
